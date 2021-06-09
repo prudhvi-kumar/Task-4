@@ -1,0 +1,40 @@
+import cv2
+cartoon_1= cv2.imread("cartoon1.jpg")[0:162][0:162]
+cartoon_2 = cv2.imread("cartoon4.jpg")[0:162][0:162]
+cartoon_1.shape
+cartoon_2.shape
+cv2.imshow("1st pic" , cartoon_1)
+cv2.waitKey()
+cv2.destroyAllWindows()
+cv2.imshow("2nd pic" , cartoon_2)
+cv2.waitKey()
+cv2.destroyAllWindows()
+import numpy
+a = numpy.array(cartoon_1[10:120 , 10:162])
+b = numpy.array(cartoon_2[10:120 , 10:162])
+a.shape
+b.shape
+cv2.imshow("cropped1" , a)
+cv2.waitKey()
+cv2.destroyAllWindows()
+cv2.imshow("cropped2" , b )
+cv2.waitKey()
+cv2.destroyAllWindows()
+
+# image combining
+image = numpy.hstack((a , b))
+cv2.imshow("hiii" , image )
+cv2.waitKey()
+cv2.destroyAllWindows()
+-----------------------------------------------------------------------------
+
+cartoon_1[10:120 , 0:152] = b
+cartoon_2[10:120 , 0:152] = a
+b.shape
+a.shape
+
+# image swapping
+swap = numpy.hstack((cartoon_1 , cartoon_2))
+cv2.imshow("final_s" , swap )
+cv2.waitKey()
+cv2.destroyAllWindows()
